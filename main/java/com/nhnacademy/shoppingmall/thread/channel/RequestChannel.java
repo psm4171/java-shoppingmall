@@ -1,0 +1,48 @@
+package com.nhnacademy.shoppingmall.thread.channel;
+
+
+import com.nhnacademy.shoppingmall.thread.request.ChannelRequest;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class RequestChannel {
+    private final Queue<ChannelRequest> queue;
+    private final int queueMaxSize;
+
+    public RequestChannel(int queueMaxSize) {
+        this.queueMaxSize = queueMaxSize;
+        this.queue = new LinkedList<>();
+    }
+
+    public synchronized ChannelRequest getRequest() throws InterruptedException {
+        // 동기화가 걸린 것, 쓰레드 5개가 돌아갈 때, 한 번에 5개의 쓰레드가 처리하면 더 효율적
+
+        // 생산자: 주문 관련 서비스,  소비자: WorkThread (채널 안에 들어있는 큐의 요청을 하나씩 처리)
+
+        //todo#14-3 queue가 비어있다면 대기합니다.
+
+        while(queue.isEmpty()){
+            queue.wait();
+        }
+
+        //todo#14-4 queue에서 request 반환합니다.
+        return queue.poll();
+    }
+
+    public synchronized void addRequest(ChannelRequest request) throws InterruptedException {
+
+        //todo#14-5 queue가 가득차있다면 요청이 소비될 때까지 대기합니다.
+
+        while(queueMaxSize == 10){
+            wait();
+        }
+
+        //todo#14-6 queue에 요청을 추가하고 대기하고 있는 스레드를 깨웁니다
+        queue.offer(request);
+
+        notify();
+
+    }
+
+}
