@@ -1,11 +1,13 @@
 <%@ page import="java.util.Objects" %>
 <%@ page import="com.nhnacademy.shoppingmall.category.domain.Category" %>
-<%@ page import="java.util.List" %><%--&lt;%&ndash;--%>
+<%@ page import="java.util.List" %>
+<%@ page import="com.nhnacademy.shoppingmall.product.domain.Product" %><%--&lt;%&ndash;--%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
             <%
                 List<Category> categoryList = (List<Category>) request.getAttribute("category");
+                List<Product> productList = (List<Product>) request.getAttribute("productList");
             %>
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
