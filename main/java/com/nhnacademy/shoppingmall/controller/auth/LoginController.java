@@ -21,6 +21,11 @@ public class LoginController implements BaseController {
 
         HttpSession session = req.getSession(false);
 
+        if (session != null && session.getAttribute("user_id") != null) {
+
+            return "redirect:/index.do";
+        }
+
         return "shop/login/login_form";
     }
 }
