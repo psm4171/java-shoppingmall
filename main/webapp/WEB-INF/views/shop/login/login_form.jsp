@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" trimDirectiveWhitespaces="true" session="false" %>
 
-
 <div style="margin: auto; width: 400px;">
     <div class="p-2">
         <form method="post" action="/loginAction.do">
@@ -9,13 +8,13 @@
 
             <div class="form-floating">
                 <input type="text" name="user_id" class="form-control" id="user_id" required>
-<%--                <label for="user_id">회원아이디</label>--%>
+                <%--                <label for="user_id">회원아이디</label>--%>
                 <label for="user_id">ID</label>
             </div>
 
             <div class="form-floating">
                 <input type="password" name="user_password" class="form-control" id="user_password" required>
-<%--                <label for="user_password">비밀번호</label>--%>
+                <%--                <label for="user_password">비밀번호</label>--%>
                 <label for="user_password">Password</label>
             </div>
 
