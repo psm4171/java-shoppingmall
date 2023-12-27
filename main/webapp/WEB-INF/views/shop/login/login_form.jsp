@@ -1,4 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" trimDirectiveWhitespaces="true" session="false" %>
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" session="false" trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div style="margin: auto; width: 400px;">
     <div class="p-2">
@@ -17,17 +19,6 @@
                 <%--                <label for="user_password">비밀번호</label>--%>
                 <label for="user_password">Password</label>
             </div>
-
-            <%
-                String errorMessage = (String) request.getAttribute("errorMessage");
-                if (errorMessage != null) {
-            %>
-            <div class="error-message">
-                <%= errorMessage %>
-            </div>
-            <%
-                }
-            %>
 
             <button class="w-100 btn btn-lg btn-primary mt-3" type="submit" onClick="location.href='/login.do'">Sign in</button>
 
